@@ -60,7 +60,7 @@ export function Sidebar() {
 
   const handleSectionClick = (sectionId: string) => {
     setActiveSection(sectionId)
-    // If we're on a different page, navigate back to the dashboard
+    // Always navigate to the dashboard page when clicking a section
     navigate('/')
   }
 
