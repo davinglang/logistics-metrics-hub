@@ -1,16 +1,15 @@
 
 import React, { useContext } from 'react'
 import { DashboardContext } from './Layout'
-import { SidebarToggle } from './Sidebar'
 import { ActivityCodeSelector } from './ActivityCodeSelector'
 import { DateRangePicker } from './DateRangePicker'
 import { Button } from '@/components/ui/button'
-import { RefreshCw } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Menu, RefreshCw } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
 import { UserMenu } from './UserMenu'
 
 export function Header() {
-  const { activeSection } = useContext(DashboardContext)
+  const { activeSection, sidebarOpen, setSidebarOpen } = useContext(DashboardContext)
 
   const getSectionTitle = () => {
     switch (activeSection) {
@@ -31,11 +30,17 @@ export function Header() {
     }
   }
 
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen)
+  }
+
   return (
     <header className="z-10 bg-card/80 backdrop-blur-md border-b border-border sticky top-0">
       <div className="flex items-center justify-between h-16 px-6">
         <div className="flex items-center">
-          <SidebarToggle />
+          <Button variant="ghost" size="icon" onClick={toggleSidebar} className="mr-2">
+            {sidebarOpen ? <ChevronLeft size={20} /> : <Menu size={20} />}
+          </Button>
           <h1 className="text-xl font-semibold tracking-tight">{getSectionTitle()}</h1>
         </div>
 
