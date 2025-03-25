@@ -1,6 +1,6 @@
 
-import React from 'react'
-import { Layout } from '@/components/dashboard/Layout'
+import React, { useContext, useEffect } from 'react'
+import { Layout, DashboardContext } from '@/components/dashboard/Layout'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Label } from '@/components/ui/label'
@@ -9,6 +9,19 @@ import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 
 const Profile = () => {
+  // Set the active section to null when on the profile page
+  const { setActiveSection } = useContext(DashboardContext)
+  
+  useEffect(() => {
+    // This will help visually indicate we're not on a dashboard section
+    setActiveSection('')
+    
+    // Cleanup when component unmounts
+    return () => {
+      setActiveSection('dailyreports')
+    }
+  }, [setActiveSection])
+
   return (
     <Layout>
       <div className="container max-w-4xl animate-fade-in">

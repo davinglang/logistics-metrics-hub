@@ -19,8 +19,10 @@ export function UserMenu() {
 
   useEffect(() => {
     // Check if user has a theme preference stored
-    const savedTheme = localStorage.getItem('theme') || 'light'
-    setTheme(savedTheme)
+    const savedTheme = localStorage.getItem('theme') 
+    if (savedTheme === 'dark' || savedTheme === 'light') {
+      setTheme(savedTheme)
+    }
     
     // Apply the theme to the document
     document.documentElement.classList.toggle('dark', savedTheme === 'dark')

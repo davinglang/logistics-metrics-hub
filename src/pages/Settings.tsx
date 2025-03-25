@@ -1,6 +1,6 @@
 
-import React from 'react'
-import { Layout } from '@/components/dashboard/Layout'
+import React, { useContext, useEffect } from 'react'
+import { Layout, DashboardContext } from '@/components/dashboard/Layout'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
@@ -10,6 +10,19 @@ import { Separator } from '@/components/ui/separator'
 import { toast } from '@/components/ui/use-toast'
 
 const Settings = () => {
+  // Set the active section to null when on the settings page
+  const { setActiveSection } = useContext(DashboardContext)
+  
+  useEffect(() => {
+    // This will help visually indicate we're not on a dashboard section
+    setActiveSection('')
+    
+    // Cleanup when component unmounts
+    return () => {
+      setActiveSection('dailyreports')
+    }
+  }, [setActiveSection])
+  
   const [darkMode, setDarkMode] = React.useState(() => {
     return localStorage.getItem('theme') === 'dark'
   })

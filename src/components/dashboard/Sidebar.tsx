@@ -13,6 +13,7 @@ import {
   FileText
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { useNavigate } from 'react-router-dom'
 
 export function Sidebar() {
   const { 
@@ -21,6 +22,8 @@ export function Sidebar() {
     activeSection, 
     setActiveSection 
   } = useContext(DashboardContext)
+  
+  const navigate = useNavigate()
 
   const sections = [
     {
@@ -55,6 +58,17 @@ export function Sidebar() {
     },
   ]
 
+  const handleSectionClick = (sectionId: string) => {
+    setActiveSection(sectionId)
+    // If we're on a different page, navigate back to the dashboard
+    navigate('/')
+  }
+
+  const handleLogoClick = () => {
+    setActiveSection('dailyreports')
+    navigate('/')
+  }
+
   return (
     <aside
       className={cn(
@@ -64,7 +78,10 @@ export function Sidebar() {
     >
       <div className="flex flex-col h-full">
         <div className="flex items-center justify-between h-16 px-4 border-b border-border">
-          <div className="flex items-center">
+          <div 
+            className="flex items-center cursor-pointer" 
+            onClick={handleLogoClick}
+          >
             <span className="text-lg font-semibold tracking-tight">Logistics Hub</span>
           </div>
           <Button
@@ -82,7 +99,7 @@ export function Sidebar() {
             {sections.map((section) => (
               <li key={section.id}>
                 <button
-                  onClick={() => setActiveSection(section.id)}
+                  onClick={() => handleSectionClick(section.id)}
                   className={cn(
                     "flex items-center w-full rounded-md px-3 py-2 text-sm font-medium transition-colors",
                     activeSection === section.id
