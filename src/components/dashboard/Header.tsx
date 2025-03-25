@@ -7,12 +7,15 @@ import { DateRangePicker } from './DateRangePicker'
 import { Button } from '@/components/ui/button'
 import { RefreshCw } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
+import { UserMenu } from './UserMenu'
 
 export function Header() {
   const { activeSection } = useContext(DashboardContext)
 
   const getSectionTitle = () => {
     switch (activeSection) {
+      case 'dailyreports':
+        return 'Rapports Journaliers'
       case 'productivity':
         return 'Productivity Metrics'
       case 'financial':
@@ -43,6 +46,7 @@ export function Header() {
           <Button variant="outline" size="icon">
             <RefreshCw size={16} />
           </Button>
+          <UserMenu />
         </div>
       </div>
     </header>
