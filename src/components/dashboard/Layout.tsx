@@ -26,7 +26,7 @@ export const DashboardContext = React.createContext<{
   setDateRange: () => {},
   sidebarOpen: true,
   setSidebarOpen: () => {},
-  activeSection: 'productivity',
+  activeSection: 'dailyreports', // Changed default section to dailyreports
   setActiveSection: () => {},
 })
 
@@ -34,7 +34,7 @@ export function Layout({ children }: LayoutProps) {
   const [activityCode, setActivityCode] = useState<ActivityCode>('ACT001')
   const [dateRange, setDateRange] = useState(getDefaultDateRange())
   const [sidebarOpen, setSidebarOpen] = useState(true)
-  const [activeSection, setActiveSection] = useState('productivity')
+  const [activeSection, setActiveSection] = useState('dailyreports') // Changed default section
 
   return (
     <DashboardContext.Provider

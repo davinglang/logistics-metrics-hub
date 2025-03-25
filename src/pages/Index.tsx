@@ -1,11 +1,12 @@
 
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { Layout, DashboardContext } from '@/components/dashboard/Layout'
 import { ProductivitySection } from '@/components/dashboard/sections/Productivity'
 import { FinancialSection } from '@/components/dashboard/sections/Financial'
 import { AlertsSection } from '@/components/dashboard/sections/Alerts'
 import { StockSection } from '@/components/dashboard/sections/Stock'
 import { QualitySection } from '@/components/dashboard/sections/Quality'
+import { DailyReportsSection } from '@/components/dashboard/sections/DailyReports'
 
 const Index = () => {
   return (
@@ -21,6 +22,8 @@ const DashboardContent = () => {
   // Render the active section based on the sidebar selection
   const renderActiveSection = () => {
     switch (activeSection) {
+      case 'dailyreports':
+        return <DailyReportsSection />
       case 'productivity':
         return <ProductivitySection />
       case 'financial':
@@ -32,7 +35,7 @@ const DashboardContent = () => {
       case 'quality':
         return <QualitySection />
       default:
-        return <ProductivitySection />
+        return <DailyReportsSection />
     }
   }
 

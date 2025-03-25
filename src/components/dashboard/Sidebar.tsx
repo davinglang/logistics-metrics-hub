@@ -9,7 +9,8 @@ import {
   PackageSearch,
   CircleCheck,
   Menu,
-  X
+  X,
+  FileText
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
@@ -22,6 +23,11 @@ export function Sidebar() {
   } = useContext(DashboardContext)
 
   const sections = [
+    {
+      id: 'dailyreports',
+      label: 'Rapports Journaliers',
+      icon: <FileText size={18} />,
+    },
     {
       id: 'productivity',
       label: 'Productivity',
