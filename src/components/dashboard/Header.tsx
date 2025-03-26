@@ -50,7 +50,7 @@ export function Header() {
           <ActivityCodeSelector />
           <Separator orientation="vertical" className="h-8" />
           <DateRangePicker />
-          <Button variant="outline" size="icon">
+          <Button variant="outline" size="icon" title="Actualiser">
             <RefreshCw size={16} />
           </Button>
           <UserMenu />

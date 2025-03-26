@@ -66,7 +66,7 @@ export function Sidebar() {
 
   const handleSectionClick = (sectionId: string) => {
     setActiveSection(sectionId)
-    // Always navigate to the dashboard page when clicking a section
+    // Toujours naviguer vers la page du tableau de bord lors du clic sur une section
     navigate('/')
   }
 
@@ -122,7 +122,7 @@ export function Sidebar() {
         </nav>
 
         <div className="p-4 border-t border-border text-xs text-muted-foreground">
-          Tableau de Bord des Expéditions Logistiques API v1.0
+          Hub de Logistique API v1.0
         </div>
       </div>
     </aside>

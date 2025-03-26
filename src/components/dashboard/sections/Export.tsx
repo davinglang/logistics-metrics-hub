@@ -7,6 +7,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Download, Calendar as CalendarIcon } from 'lucide-react'
 import { format } from 'date-fns'
+import { fr } from 'date-fns/locale'
 import { cn } from '@/lib/utils'
 
 export function ExportSection() {
@@ -28,13 +29,13 @@ export function ExportSection() {
   }
 
   const handleExport = () => {
-    // In a real application, this would trigger the export process
-    console.log('Exporting data:', {
+    // Dans une application réelle, cela déclencherait le processus d'exportation
+    console.log('Exportation des données:', {
       date: selectedDate,
       selectedData
     })
     
-    // Mock export success message
+    // Message de succès simulé
     alert('Les données ont été exportées avec succès!')
   }
 
@@ -74,7 +75,7 @@ export function ExportSection() {
                     )}
                   >
                     <CalendarIcon className="mr-2 h-4 w-4" />
-                    {selectedDate ? format(selectedDate, "PPP") : <span>Sélectionnez une date</span>}
+                    {selectedDate ? format(selectedDate, "PPP", { locale: fr }) : <span>Sélectionnez une date</span>}
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
@@ -83,6 +84,7 @@ export function ExportSection() {
                     selected={selectedDate}
                     onSelect={setSelectedDate}
                     initialFocus
+                    locale={fr}
                     className="p-3 pointer-events-auto"
                   />
                 </PopoverContent>

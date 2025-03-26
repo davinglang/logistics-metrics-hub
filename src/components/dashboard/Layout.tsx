@@ -56,7 +56,7 @@ export function Layout({ children }: LayoutProps) {
           <main 
             className={cn(
               "flex-1 overflow-y-auto transition-all duration-300 ease-in-out",
-              sidebarOpen ? "pl-64" : "pl-0"
+              sidebarOpen ? "md:pl-64" : "pl-0"
             )}
           >
             <div className="container mx-auto py-6 px-6">
