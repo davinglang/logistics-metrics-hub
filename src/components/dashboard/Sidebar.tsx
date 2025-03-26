@@ -10,7 +10,8 @@ import {
   CircleCheck,
   Menu,
   X,
-  FileText
+  FileText,
+  Download
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useNavigate } from 'react-router-dom'
@@ -33,28 +34,33 @@ export function Sidebar() {
     },
     {
       id: 'productivity',
-      label: 'Productivity',
+      label: 'Productivité',
       icon: <BarChart3 size={18} />,
     },
     {
       id: 'financial',
-      label: 'Financial',
+      label: 'Financier',
       icon: <TrendingUp size={18} />,
     },
     {
       id: 'alerts',
-      label: 'Alerts',
+      label: 'Alertes',
       icon: <Bell size={18} />,
     },
     {
       id: 'stock',
-      label: 'Stock & Storage',
+      label: 'Stock & Stockage',
       icon: <PackageSearch size={18} />,
     },
     {
       id: 'quality',
-      label: 'Quality Assurance',
+      label: 'Assurance Qualité',
       icon: <CircleCheck size={18} />,
+    },
+    {
+      id: 'export',
+      label: 'Exporter les Données',
+      icon: <Download size={18} />,
     },
   ]
 
@@ -116,7 +122,7 @@ export function Sidebar() {
         </nav>
 
         <div className="p-4 border-t border-border text-xs text-muted-foreground">
-          API Logistics Expeditions Dashboard v1.0
+          Tableau de Bord des Expéditions Logistiques API v1.0
         </div>
       </div>
     </aside>

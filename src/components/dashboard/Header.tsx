@@ -16,17 +16,19 @@ export function Header() {
       case 'dailyreports':
         return 'Rapports Journaliers'
       case 'productivity':
-        return 'Productivity Metrics'
+        return 'Métriques de Productivité'
       case 'financial':
-        return 'Financial Metrics'
+        return 'Métriques Financières'
       case 'alerts':
-        return 'System Alerts'
+        return 'État des Alertes Système'
       case 'stock':
-        return 'Stock & Storage Metrics'
+        return 'Métriques de Stock et Stockage'
       case 'quality':
-        return 'Quality Assurance'
+        return 'Assurance Qualité'
+      case 'export':
+        return 'Exporter les Données'
       default:
-        return 'Dashboard'
+        return 'Tableau de Bord'
     }
   }
 

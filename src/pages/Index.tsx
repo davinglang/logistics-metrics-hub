@@ -7,6 +7,7 @@ import { AlertsSection } from '@/components/dashboard/sections/Alerts'
 import { StockSection } from '@/components/dashboard/sections/Stock'
 import { QualitySection } from '@/components/dashboard/sections/Quality'
 import { DailyReportsSection } from '@/components/dashboard/sections/DailyReports'
+import { ExportSection } from '@/components/dashboard/sections/Export'
 
 const Index = () => {
   return (
@@ -34,6 +35,8 @@ const DashboardContent = () => {
         return <StockSection />
       case 'quality':
         return <QualitySection />
+      case 'export':
+        return <ExportSection />
       default:
         return <DailyReportsSection />
     }
