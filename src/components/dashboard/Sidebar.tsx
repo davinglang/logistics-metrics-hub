@@ -88,13 +88,14 @@ export function Sidebar() {
             className="flex items-center cursor-pointer" 
             onClick={handleLogoClick}
           >
-            <span className="text-lg font-semibold tracking-tight">Logistics Hub</span>
+            <span className="text-lg font-semibold tracking-tight">Hub de Logistique</span>
           </div>
           <Button
             variant="ghost"
             size="icon"
             onClick={() => setSidebarOpen(false)}
             className="md:hidden"
+            aria-label="Fermer le menu"
           >
             <X size={20} />
           </Button>
@@ -138,6 +139,7 @@ export function SidebarToggle() {
       size="icon"
       onClick={() => setSidebarOpen(!sidebarOpen)}
       className="mr-2"
+      aria-label="Afficher/Masquer le menu latéral"
     >
       <Menu size={20} />
     </Button>

@@ -20,7 +20,7 @@ const Index = () => {
 const DashboardContent = () => {
   const { activeSection } = useContext(DashboardContext)
 
-  // Render the active section based on the sidebar selection
+  // Afficher la section active en fonction de la sélection dans la barre latérale
   const renderActiveSection = () => {
     switch (activeSection) {
       case 'dailyreports':
