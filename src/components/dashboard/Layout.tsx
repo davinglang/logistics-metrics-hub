@@ -1,11 +1,14 @@
 
 import React, { useState } from 'react'
-import { Sidebar } from './Sidebar'
 import { Header } from './Header'
-import { SidebarToggleFloat } from './SidebarToggleFloat'
 import { cn } from '@/lib/utils'
 import { ActivityCode } from '@/lib/api'
 import { getDefaultDateRange } from '@/lib/utils'
+import { 
+  SidebarProvider, 
+  SidebarInset,
+} from '@/components/ui/sidebar'
+import { DashboardSidebar } from './DashboardSidebar'
 
 interface LayoutProps {
   children: React.ReactNode
@@ -50,23 +53,19 @@ export function Layout({ children }: LayoutProps) {
         setActiveSection,
       }}
     >
-      <div className="h-screen flex overflow-hidden bg-background">
-        <Sidebar />
-        <div className="flex-1 flex flex-col overflow-hidden">
-          <Header />
-          <main 
-            className={cn(
-              "flex-1 overflow-y-auto transition-all duration-300 ease-in-out",
-              sidebarOpen ? "md:pl-64" : "md:pl-16"
-            )}
-          >
-            <div className="container mx-auto py-6 px-6">
-              {children}
-            </div>
-          </main>
+      <SidebarProvider defaultOpen={sidebarOpen} open={sidebarOpen} onOpenChange={setSidebarOpen}>
+        <div className="group/sidebar-wrapper flex min-h-screen h-screen w-full overflow-hidden bg-background">
+          <DashboardSidebar />
+          <SidebarInset>
+            <Header />
+            <main className="flex-1 overflow-y-auto p-6">
+              <div className="container mx-auto">
+                {children}
+              </div>
+            </main>
+          </SidebarInset>
         </div>
-        <SidebarToggleFloat />
-      </div>
+      </SidebarProvider>
     </DashboardContext.Provider>
   )
 }
