@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { Sidebar } from './Sidebar'
 import { Header } from './Header'
+import { SidebarToggleFloat } from './SidebarToggleFloat'
 import { cn } from '@/lib/utils'
 import { ActivityCode } from '@/lib/api'
 import { getDefaultDateRange } from '@/lib/utils'
@@ -64,6 +65,7 @@ export function Layout({ children }: LayoutProps) {
             </div>
           </main>
         </div>
+        <SidebarToggleFloat />
       </div>
     </DashboardContext.Provider>
   )

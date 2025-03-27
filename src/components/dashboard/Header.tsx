@@ -40,7 +40,13 @@ export function Header() {
     <header className="z-10 bg-card/80 backdrop-blur-md border-b border-border sticky top-0">
       <div className="flex items-center justify-between h-16 px-6">
         <div className="flex items-center">
-          <Button variant="ghost" size="icon" onClick={toggleSidebar} className="mr-2" aria-label="Afficher/Masquer le menu latéral">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            onClick={toggleSidebar} 
+            className="mr-2 relative" 
+            aria-label="Afficher/Masquer le menu latéral"
+          >
             {sidebarOpen ? <ChevronLeft size={20} /> : <Menu size={20} />}
           </Button>
           <h1 className="text-xl font-semibold tracking-tight">{getSectionTitle()}</h1>

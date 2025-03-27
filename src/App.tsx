@@ -21,7 +21,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          {/* AJOUTER TOUS LES ITINÉRAIRES PERSONNALISÉS AU-DESSUS DE L'ITINÉRAIRE ATTRAPE-TOUT "*" */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
