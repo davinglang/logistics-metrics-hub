@@ -8,7 +8,6 @@ import {
   Bell,
   PackageSearch,
   CircleCheck,
-  X,
   FileText,
   Download,
   ChevronLeft
@@ -78,34 +77,39 @@ export function Sidebar() {
   return (
     <aside
       className={cn(
-        "fixed inset-y-0 left-0 z-20 flex-shrink-0 w-64 transform transition-transform duration-300 ease-in-out bg-card border-r border-border overflow-hidden",
-        sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        "fixed inset-y-0 left-0 z-20 flex-shrink-0 transform transition-all duration-300 ease-in-out bg-card border-r border-border overflow-hidden",
+        sidebarOpen ? "w-64" : "w-16"
       )}
     >
       <div className="flex flex-col h-full">
         <div className="flex items-center justify-between h-16 px-4 border-b border-border">
           <div 
-            className="flex items-center cursor-pointer" 
+            className={cn(
+              "flex items-center cursor-pointer",
+              !sidebarOpen && "justify-center w-full"
+            )}
             onClick={handleLogoClick}
           >
-            <span className="text-lg font-semibold tracking-tight">Hub de Logistique</span>
+            {sidebarOpen ? (
+              <span className="text-lg font-semibold tracking-tight">Hub de Logistique</span>
+            ) : (
+              <div className="w-8 h-8 flex items-center justify-center rounded-md bg-primary/10 text-primary">
+                HL
+              </div>
+            )}
           </div>
           
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="transition-transform duration-300"
-            aria-label="Réduire le menu latéral"
-          >
-            <ChevronLeft 
-              size={20} 
-              className={cn(
-                "transition-transform duration-300",
-                sidebarOpen ? "" : "rotate-180"
-              )}
-            />
-          </Button>
+          {sidebarOpen && (
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              className="transition-transform duration-300"
+              aria-label="Réduire le menu latéral"
+            >
+              <ChevronLeft size={20} />
+            </Button>
+          )}
         </div>
 
         <nav className="flex-1 overflow-y-auto py-4">
@@ -115,22 +119,46 @@ export function Sidebar() {
                 <button
                   onClick={() => handleSectionClick(section.id)}
                   className={cn(
-                    "flex items-center w-full rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                    "flex items-center w-full rounded-md py-2 text-sm font-medium transition-colors",
+                    sidebarOpen ? "px-3 justify-start" : "px-0 justify-center",
                     activeSection === section.id
                       ? "bg-primary text-primary-foreground"
                       : "hover:bg-secondary text-muted-foreground hover:text-foreground"
                   )}
+                  title={!sidebarOpen ? section.label : undefined}
                 >
-                  <span className="mr-3">{section.icon}</span>
-                  {section.label}
+                  <span className={cn(
+                    sidebarOpen ? "mr-3" : "mx-auto"
+                  )}>{section.icon}</span>
+                  {sidebarOpen && section.label}
                 </button>
               </li>
             ))}
           </ul>
         </nav>
 
-        <div className="p-4 border-t border-border text-xs text-muted-foreground">
-          Hub de Logistique API v1.0
+        {!sidebarOpen && (
+          <div className="p-2 flex justify-center">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              className="transition-transform duration-300"
+              aria-label="Agrandir le menu latéral"
+            >
+              <ChevronLeft 
+                size={20} 
+                className="rotate-180"
+              />
+            </Button>
+          </div>
+        )}
+
+        <div className={cn(
+          "border-t border-border text-xs text-muted-foreground",
+          sidebarOpen ? "p-4" : "p-2 text-center"
+        )}>
+          {sidebarOpen ? "Hub de Logistique API v1.0" : "v1.0"}
         </div>
       </div>
     </aside>
