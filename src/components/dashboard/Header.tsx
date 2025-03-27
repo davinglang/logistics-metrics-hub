@@ -4,7 +4,7 @@ import { DashboardContext } from './Layout'
 import { ActivityCodeSelector } from './ActivityCodeSelector'
 import { DateRangePicker } from './DateRangePicker'
 import { Button } from '@/components/ui/button'
-import { ChevronLeft, ChevronRight, Menu, RefreshCw } from 'lucide-react'
+import { Menu, RefreshCw } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
 import { UserMenu } from './UserMenu'
 
@@ -44,10 +44,10 @@ export function Header() {
             variant="ghost" 
             size="icon" 
             onClick={toggleSidebar} 
-            className="mr-2 relative" 
+            className="mr-2 relative hover:bg-primary hover:text-primary-foreground"
             aria-label="Afficher/Masquer le menu latéral"
           >
-            {sidebarOpen ? <ChevronLeft size={20} /> : <Menu size={20} />}
+            <Menu size={20} />
           </Button>
           <h1 className="text-xl font-semibold tracking-tight">{getSectionTitle()}</h1>
         </div>

@@ -11,7 +11,8 @@ import {
   Menu,
   X,
   FileText,
-  Download
+  Download,
+  ChevronLeft
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useNavigate } from 'react-router-dom'
@@ -121,6 +122,19 @@ export function Sidebar() {
             ))}
           </ul>
         </nav>
+
+        <div className="p-4 border-t border-border">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="w-full flex items-center justify-between"
+            aria-label="Réduire le menu latéral"
+          >
+            <ChevronLeft size={18} />
+            <span className="text-xs font-medium">Réduire le menu</span>
+          </Button>
+        </div>
 
         <div className="p-4 border-t border-border text-xs text-muted-foreground">
           Hub de Logistique API v1.0
