@@ -4,12 +4,12 @@ import { DashboardContext } from './Layout'
 import { ActivityCodeSelector } from './ActivityCodeSelector'
 import { DateRangePicker } from './DateRangePicker'
 import { Button } from '@/components/ui/button'
-import { Menu, RefreshCw } from 'lucide-react'
+import { RefreshCw } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
 import { UserMenu } from './UserMenu'
 
 export function Header() {
-  const { activeSection, sidebarOpen, setSidebarOpen } = useContext(DashboardContext)
+  const { activeSection } = useContext(DashboardContext)
 
   const getSectionTitle = () => {
     switch (activeSection) {
@@ -32,23 +32,10 @@ export function Header() {
     }
   }
 
-  const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen)
-  }
-
   return (
     <header className="z-10 bg-card/80 backdrop-blur-md border-b border-border sticky top-0">
       <div className="flex items-center justify-between h-16 px-6">
         <div className="flex items-center">
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            onClick={toggleSidebar} 
-            className="mr-2 relative hover:bg-primary hover:text-primary-foreground"
-            aria-label="Afficher/Masquer le menu latéral"
-          >
-            <Menu size={20} />
-          </Button>
           <h1 className="text-xl font-semibold tracking-tight">{getSectionTitle()}</h1>
         </div>
 

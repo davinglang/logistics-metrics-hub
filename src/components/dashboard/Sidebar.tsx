@@ -8,7 +8,6 @@ import {
   Bell,
   PackageSearch,
   CircleCheck,
-  Menu,
   X,
   FileText,
   Download,
@@ -91,14 +90,21 @@ export function Sidebar() {
           >
             <span className="text-lg font-semibold tracking-tight">Hub de Logistique</span>
           </div>
+          
           <Button
             variant="ghost"
             size="icon"
-            onClick={() => setSidebarOpen(false)}
-            className="md:hidden"
-            aria-label="Fermer le menu"
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="transition-transform duration-300"
+            aria-label="Réduire le menu latéral"
           >
-            <X size={20} />
+            <ChevronLeft 
+              size={20} 
+              className={cn(
+                "transition-transform duration-300",
+                sidebarOpen ? "" : "rotate-180"
+              )}
+            />
           </Button>
         </div>
 
@@ -123,19 +129,6 @@ export function Sidebar() {
           </ul>
         </nav>
 
-        <div className="p-4 border-t border-border">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="w-full flex items-center justify-between"
-            aria-label="Réduire le menu latéral"
-          >
-            <ChevronLeft size={18} />
-            <span className="text-xs font-medium">Réduire le menu</span>
-          </Button>
-        </div>
-
         <div className="p-4 border-t border-border text-xs text-muted-foreground">
           Hub de Logistique API v1.0
         </div>
@@ -155,7 +148,13 @@ export function SidebarToggle() {
       className="mr-2"
       aria-label="Afficher/Masquer le menu latéral"
     >
-      <Menu size={20} />
+      <ChevronLeft 
+        size={20} 
+        className={cn(
+          "transition-transform duration-300",
+          sidebarOpen ? "" : "rotate-180"
+        )}
+      />
     </Button>
   )
 }
